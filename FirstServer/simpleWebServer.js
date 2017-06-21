@@ -7,28 +7,46 @@ var server = http.createServer(function(req,res) {
 	//Vamos imprimir os parametros enviados na requisição
 	var url = require("url");
 	var params = url.parse(req.url, true);
-	console.log(params.query);
+	console.log(params.pathname);
+
+	// for (x in params.query){
+
+	// }
 
 	
 
 	//baseando nos na url podemos indicar um arquivo para ser entregue para quem fez o request
 	var fs = require("fs");
-	fs.readFile(__dirname + params.pathname, function(err,contentReaded){
+	//fs.readFile(__dirname + params.pathname, function(err,contentReaded){
 
-		if(err){
-			console.log(err);
-			res.writeHead(404, {'Content-Type': 'text/html',
-								'Content-Type': 'charset=utf-8'}); 
-			res.write("<h1>404 NOT FOUND</h1>");
-			res.end();
-		}
+		// if(err){
+		// 	console.log(err);
+		// 	res.writeHead(404, {'Content-Type': 'text/html',
+		// 						'Content-Type': 'charset=utf-8'}); 
+		// 	res.write("<h1>404 NOT FOUND ddsf</h1>");
+		// 	res.end();
+		// }
 
 		//estamos começando a escrever a resposta do meu servidor
-		res.writeHead(200, {'Content-Type': 'text/html'}); 
-		res.write(contentReaded,"utf-8");
+		res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'}); 
+		var obj = [];
+
+		if (params.pathname == "/guilherme"){
+			obj.push({
+				id: 10,
+				nome: 'Guilherme Ventura'
+			});
+		}else{
+			obj.push({
+				id: -1,
+				nome: 'Usuário não encontrado'
+			});
+		}
+		
+		res.write(JSON.stringify(obj),"utf-8");
 		res.end();
 
-	})
+	// })
 
 });
 
