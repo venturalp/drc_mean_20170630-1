@@ -1,6 +1,6 @@
 //vamos criar uma variavel baseada no modulo de http
 var http = require("http");
-var circle = require("./module/circle.js");
+var circle = require(__dirname + "/module/circle.js");
 
 //vamos criar o nosso servidor
 var server = http.createServer(function(req,res) {
