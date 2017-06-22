@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 node_modules/
+=======
+node_modules
+>>>>>>> ba4b5ec7a2b2acb64d5e4f61fb7f0415802d2124
 *.tabasco
 
 # Logs
@@ -59,3 +63,8 @@ typings/
 
 # dotenv environment variables file
 .env
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ba4b5ec7a2b2acb64d5e4f61fb7f0415802d2124

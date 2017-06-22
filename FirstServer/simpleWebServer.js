@@ -10,6 +10,7 @@ var server = http.createServer(function(req,res) {
 	var params = url.parse(req.url, true);
 	//console.log(params.pathname);
 
+
 	var id = params.query.id;
 	var r = params.query.r;
 
@@ -19,6 +20,7 @@ var server = http.createServer(function(req,res) {
 	}
 
 	//baseando nos na url podemos indicar um arquivo para ser entregue para quem fez o request
+D
 	//var fs = require("fs");
 	//fs.readFile(__dirname + params.pathname, function(err,contentReaded){
 
@@ -57,6 +59,7 @@ var server = http.createServer(function(req,res) {
 		res.write("<h1>FAKER</h1>");
 		res.write("<h2>Nome: " + faker.name.findName() + "</h2>"); 
 		res.write("<img src='" + faker.image.avatar() + "'/>");
+
 		res.end();
 
 	// })
