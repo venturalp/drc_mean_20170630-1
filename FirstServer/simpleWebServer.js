@@ -8,7 +8,7 @@ var server = http.createServer(function(req,res) {
 	//Vamos imprimir os parametros enviados na requisição
 	var url = require("url");
 	var params = url.parse(req.url, true);
-	console.log(params.pathname);
+	//console.log(params.pathname);
 
 	var id = params.query.id;
 	var r = params.query.r;
@@ -30,8 +30,11 @@ var server = http.createServer(function(req,res) {
 		// }
 
 		//estamos começando a escrever a resposta do meu servidor
-		res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'}); 
+		res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'}); 
+		// res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'}); 
 		var obj = [];
+
+		var faker = require("faker");
 
 		if (params.pathname == "/guilherme" && id != 30){
 			obj.push({
@@ -50,7 +53,10 @@ var server = http.createServer(function(req,res) {
 			});
 		}
 		
-		res.write(JSON.stringify(obj),"utf-8");
+		// res.write(JSON.stringify(obj),"utf-8");
+		res.write("<h1>FAKER</h1>");
+		res.write("<h2>Nome: " + faker.name.findName() + "</h2>"); 
+		res.write("<img src='" + faker.image.avatar() + "'/>");
 		res.end();
 
 	// })
