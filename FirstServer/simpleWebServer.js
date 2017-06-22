@@ -28,10 +28,15 @@ var server = http.createServer(function(req,res) {
 			res.end();
 			return;
 		}
+		
+		var faker = require("faker");
+		var randomName = faker.name.findName(); 
+		var randomImage = faker.internet.avatar();
 
 		//estamos começando a escrever a resposta do meu servidor
 		res.writeHead(200, {'Content-Type': 'text/html'}); 
 		res.write(contentReaded,"utf-8");
+		res.write('Your random name: ' + randomName + "<img src='"+randomImage + "'/>");
 		res.end();
 
 	})
