@@ -1,0 +1,14 @@
+{
+  "name": "express_step_by_step",
+  "version": "1.0.0",
+  "description": "Express passo a passo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme Ventura de Souza",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
