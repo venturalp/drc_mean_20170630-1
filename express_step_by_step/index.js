@@ -36,6 +36,8 @@ var Aluno = mongoose.model("Alunos", {
 
 Aluno.collectionName = "Alunos";
 
+
+//CONSULTA LISTA
 app.get("/api/alunos", function (req, res) {
     Aluno.find(function (err, doc) {
         if (err)
@@ -44,6 +46,8 @@ app.get("/api/alunos", function (req, res) {
     });
 });
 
+
+//CONSULTA COM PARÂMETRO
 app.get('/api/aluno/:id', function (req, res) {
     Aluno.find({
         _id: req.params.id
@@ -55,11 +59,13 @@ app.get('/api/aluno/:id', function (req, res) {
     });
 });
 
+
+//INSERINDO
 app.post('/api/aluno', function (req, res) {
 //    console.log(req);
-    console.log(req.body.Nome);
-    console.log(req.body.Idade);
-    console.log(req.body.Email);
+//    console.log(req.body.Nome);
+//    console.log(req.body.Idade);
+//    console.log(req.body.Email);
     
     var dados = new Aluno({
         nome: req.body.Nome,
@@ -67,13 +73,38 @@ app.post('/api/aluno', function (req, res) {
         idade: req.body.Idade
     });
     
-    dados.save(function(err, doc){
+    dados.save(function(err){
        if (err)
            res.json({result:false, message:"Erro ao inserir aluno!"});
         
         res.json({result:true, message:"Inserido com sucesso!"});
     });
     
+});
+
+
+//UPDATE
+app.put('/api/aluno', function (req, res) {
+//    console.log(req);
+//    console.log(req.body.Nome);
+//    console.log(req.body.Idade);
+//    console.log(req.body.Email);
+    
+    Aluno.findOne({_id:req.body._id}, function(err, doc){
+        if (err)
+            res.send(err);
+        
+        doc.nome = req.body.Nome;
+        doc.email = req.body.Email;
+        doc.idade = req.body.Idade;
+        
+        doc.save(function(err){
+           if (err)
+               res.json({result:false, message:"Erro ao alterar aluno!"});
+
+            res.json({result:true, message:"Alterado com sucesso!"});
+        });
+    });    
 });
 
 app.get('/api/professor/:id/:disciplina', function (req, res) {
