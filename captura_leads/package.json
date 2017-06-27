@@ -1,0 +1,16 @@
+{
+  "name": "captura_leads",
+  "version": "0.0.1",
+  "description": "API para captação de leads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme Ventura de Souza",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0"
+  }
+}
