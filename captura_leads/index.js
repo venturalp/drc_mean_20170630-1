@@ -3,14 +3,15 @@ const app = express();
 const db = require('mongoose');
 const bodyParser = require('body-parser');
 const faker = require('faker');
-const models = require("./modules/models.js")(db);
+const Leads = require("./api/Lead");
 faker.locale = 'pt_BR';
 
-db.connect("mongodb://localhost:27017/leads");
+db.connect("mongodb://localhost:27017/ColetaLeads");
 
 app.use(express.static(__dirname + "/wwwroot"));
 
 app.use(bodyParser.json());
+app.use('/api', Leads);
 
 app.post('/api/cadastraBase', function (req, res) {
     var qtd = req.body.qtde;
@@ -24,8 +25,7 @@ app.post('/api/cadastraBase', function (req, res) {
             telefone: faker.phone.phoneNumber(),
             empresa: faker.company.companyName(),
             aceito: faker.random.boolean()
-        });
-
+        });		
 
         dados.push(aux);
     }
