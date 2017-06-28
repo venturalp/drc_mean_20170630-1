@@ -4,7 +4,7 @@ const db = require('mongoose');
 const bodyParser = require('body-parser');
 const faker = require('faker');
 const models = require("./modules/models.js")(db);
-
+faker.locale = 'pt_BR';
 
 db.connect("mongodb://localhost:27017/leads");
 
