@@ -8,13 +8,13 @@ const models = require("./modules/models.js")(db);
 
 db.connect("mongodb://localhost:27017/leads");
 
-app.use(express.static(__dirname + "/wwwwroot"));
+app.use(express.static(__dirname + "/wwwroot"));
 
 app.use(bodyParser.json());
 
 app.post('/api/cadastraBase', function (req, res) {
     var qtd = req.body.qtde;
-//    console.log(req);
+//    console.log(qtd);
     //    res.send("ok");
     var dados = [];
     for (i = 0; i < qtd; i++) {
@@ -41,8 +41,6 @@ app.post('/api/cadastraBase', function (req, res) {
             res.json(doc);
         });
     });
-
-
 });
 
 app.listen(3000, function () {
