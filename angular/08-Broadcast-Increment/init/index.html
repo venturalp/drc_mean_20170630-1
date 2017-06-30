@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>Custom Service</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body ng-app="customServiceApp">
+
+    <div id="div1" ng-controller="Secao1Ctrl">
+        <small>Controlador 1</small>
+        <h1>Total do Serviço: {{ total }}</h1>
+        <br/>
+        <button ng-click="incrementarValorTotalEm(1)">Incrementar Total do Serviço</button>
+    </div>
+
+    <div id="div2" ng-controller="Secao2Ctrl">
+        <small>Controlador 2</small>
+        <h1>Total: {{ total }}</h1>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

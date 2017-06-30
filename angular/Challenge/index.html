@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>Custom Service</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-app="customServiceApp">
+
+    <div class="cyan" ng-controller="Secao1Ctrl">
+        <small>Controlador 1</small>
+        <h3>Mensagem do Serviço:<br><h1 class="mensagem">{{ pegarMensagem() }}</h1></h3>
+    </div>
+
+    <div class="green" ng-controller="Secao2Ctrl">
+        <small>Controlador 2</small>
+        <h3>Mensagem do Serviço:<br><h1 class="mensagem">{{ pegarMensagem() }}</h1></h3>
+    </div>
+
+    <div class="yellow" ng-controller="ServicoSetterCtrl">
+        <form ng-submit="setarMensagem()">
+            <h3>Nova Mensagem no Serviço:</h3>
+            <br>
+            <input type="text" ng-model="novaMensagem">
+        </form>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="modules.js"></script>
+</body>
+
+</html>

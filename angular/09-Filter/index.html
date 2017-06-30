@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aplicação do Filtro</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>Filtros</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+    	div{
+    		padding: 50px;
+    	}
+    </style>
+</head>
+<body ng-app="App">
+	
+	<div ng-controller="AlunosCtrl">
+		<label for="">Busca: </label><input type="text" ng-model="busca">
+        <input type="checkbox" ng-model="teste"/>
+		<ul>
+			<li ng-repeat="aluno in alunos | orderBy:'name':true  | filter:{busca} | underAge:teste:'age' ">
+				{{aluno.name | uppercase }} - {{aluno.email | lowercase}} - {{aluno.age}}
+			</li>
+		</ul>
+
+		<button ng-click="showBusca()">show search</button>
+
+	</div>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

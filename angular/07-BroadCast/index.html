@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Broad Cast</title>
+	<style rel="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"></style>
+	<style>
+		#sender{
+			background: #cccccc;
+			padding: 50px;
+		}		
+		#reader{
+			padding: 50px;
+			background: #FF6600;
+		}
+	</style>
+</head>
+<body ng-app="broadApp">
+	
+	<div id="sender" ng-controller="SendCtrl">
+		<input type="text" ng-model="texto">
+		<input type="button" class="btn-sucess" ng-click="sendText()" value="SEND">
+	</div>
+	<div id="reader" ng-controller="ReaderCtrl">
+		<label>{{content}}</label>
+	</div>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
