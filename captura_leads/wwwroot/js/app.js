@@ -9,8 +9,11 @@ const URL_API = "http://localhost:3000/api/";
 		$scope.busca = "";
 
 		$scope.$on('GetLeads', function(ev, data){
-			$scope.leads = data.data.dados;
-			console.log(data.data.dados);
+			if (data.result)
+				$scope.leads = data.dados;
+			else
+				alert("Erro ao buscar dados");
+			console.log(data);
 		});
 
 		$scope.$on('ErrorAPI', function(ev, msg){
