@@ -45,6 +45,14 @@ router.get('/Lead/Download/:campanha', function(req, res){
 	});
 });
 
+router.get('/Lead', function(req, res){
+	models.Lead.find().limit(100).exec(function(err, doc){
+		if (err)
+			res.json({result:false, message:"Erro ao buscar dados"});
+		res.json({result:true, dados: doc});
+	});
+});
+
 router.post('/Lead/cadastraBase', function (req, res) {
     var qtd = req.body.qtde;
 //    console.log(qtd);
