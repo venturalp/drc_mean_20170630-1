@@ -3,7 +3,8 @@ var db = require('mongoose');
 var router = express.Router();
 const models = require("./../models/models");
 var json2csv = require('json2csv');
-
+const faker = require('faker');
+faker.locale = 'pt_BR';
 
 router.post('/Lead', function(req, res){
 	var aux = new models.Lead({
@@ -42,6 +43,36 @@ router.get('/Lead/Download/:campanha', function(req, res){
 		res.attachment('Download.csv');
 		res.status(200).send(file);
 	});
-})
+});
+
+router.post('/Lead/cadastraBase', function (req, res) {
+    var qtd = req.body.qtde;
+//    console.log(qtd);
+    //    res.send("ok");
+    var dados = [];
+    for (i = 0; i < qtd; i++) {
+        var aux = new models.Lead({
+            nome: faker.name.firstName(),
+            email: faker.internet.email(),
+            telefone: faker.phone.phoneNumber(),
+            empresa: faker.company.companyName(),
+            aceito: faker.random.boolean()
+        });		
+
+        dados.push(aux);
+    }
+
+    models.Lead.insertMany(dados, function (err) {
+        if (err)
+            res.send("lead não foi inserido! ");
+
+        models.Lead.find(function (err, doc) {
+            if (err)
+                res.send(err);
+
+            res.json(doc);
+        });
+    });
+});
 
 module.exports = router;
